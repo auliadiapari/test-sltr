@@ -22,10 +22,10 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Build image
-      run: docker build -f ./src/Dockerfile -t welcome:latest .
+      run: docker build -f ./src/Dockerfile -t auliardd/welcome:latest .
 
     - name: Tag image
-      run: docker tag welcome:latest welcome:1.0.0
+      run: docker tag auliardd/welcome:latest auliardd/welcome:1.0.0
 
     - name: Push image to docker hub
       run: |
