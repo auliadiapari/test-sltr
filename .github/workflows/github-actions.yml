@@ -22,8 +22,13 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Build image
-      run: docker build . --file Dockerfile --tag welcome-app-py:latest
+      run: docker build -f ./src/Dockerfile -t welcome-app-py:latest .
+
+    - name: Tag image
+      run: docker tag welcome-app-py:latest welcome-app-py:1.0.0
 
     - name: Push image to docker hub
       run: |
         docker login -u auliardd - p ${{ secrets.DOCKER_HUB_TOKEN }}
+        docker push auliardd/welcome:latest
+        docker push auliardd/welcome:1.0.0
