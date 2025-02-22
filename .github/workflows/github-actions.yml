@@ -29,6 +29,6 @@ jobs:
 
     - name: Push image to docker hub
       run: |
-        docker login -u auliardd - p ${{ secrets.DOCKER_HUB_TOKEN }}
+        docker login -u auliardd -p ${{ secrets.DOCKER_HUB_TOKEN }}
         docker push auliardd/welcome:latest
         docker push auliardd/welcome:1.0.0
