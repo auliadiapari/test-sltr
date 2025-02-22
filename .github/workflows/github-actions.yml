@@ -25,7 +25,7 @@ jobs:
       run: docker build -f ./src/Dockerfile -t welcome:latest .
 
     - name: Tag image
-      run: docker tag welcome-app-py:latest welcome:1.0.0
+      run: docker tag welcome:latest welcome:1.0.0
 
     - name: Push image to docker hub
       run: |
