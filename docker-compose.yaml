@@ -1,0 +1,8 @@
+services:
+  welcome_app:
+    container_name: welcome-app
+    build:
+      dockerfile: ./src/Dockerfile
+    restart: always
+    ports:
+      - 8000:5000

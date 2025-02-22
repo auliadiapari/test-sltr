@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-app-py
+  namespace: app-py
+  labels:
+    app: app-py
+data:
+  PORT: "8000"

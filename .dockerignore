@@ -1,0 +1,7 @@
+.github
+.venv
+k8s-gcp
+.dockerignore
+.gitignore
+docker.compose.yaml
+README.md
