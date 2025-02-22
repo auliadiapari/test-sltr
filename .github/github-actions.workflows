@@ -1,0 +1,29 @@
+name: Docker Image CI
+
+on:
+    # Use this for manually run/trigger the workflow
+    [workflow_dispatch]
+
+    # # Use this fo automatically specifi run/trigger when changes in src/
+    # push:
+    #     branches:
+    #         - main
+    #     paths:
+    #         - 'src/**'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Build image
+      run: docker build . --file Dockerfile --tag welcome-app-py:latest
+
+    - name: Push image to docker hub
+      run: |
+        docker login -u auliardd - p ${{ secrets.DOCKER_HUB_TOKEN }}
