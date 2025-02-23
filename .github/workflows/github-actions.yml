@@ -32,3 +32,26 @@ jobs:
         docker login -u auliardd -p ${{ secrets.DOCKER_HUB_TOKEN }}
         docker push auliardd/welcome:latest
         docker push auliardd/welcome:1.0.0
+
+    # - name: Set up SSH Key
+    #   run: |
+    #     ssh -p ~/.ssh
+    #     echo "${{ secrets.VM_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+    #     chmod 600 ~/.ssh/id_rsa
+    #     ssh-keyscan ${{ secrets.VM_EXTERNAL_IP }} >> ~/.ssh/known_hosts
+    
+    # - name: SSH into VM and run commands
+    #   run: |
+    #     ssh -i ~/.ssh/id_rsa ${{ secrets.VM_USER }}@${{ secrets.VM_EXTERNAL_IP }}
+    #     echo "Connected to VM!"
+    #     docker pull auliardd/welcome:1.0.0
+    #     docker run -d -n welcome-app -p 80:5000 auliardd/welcome:latest
+
+    # - name: SSH into Bastion VM (Jumphost to GKE Cluster)
+    #   run: |
+    #     ssh -i ~/.ssh/id_rsa ${{ secrets.VM_USER }}@${{ secrets.VM_EXTERNAL_IP }}
+    #     echo "Connected to Bastion VM!"
+    #     kubectl set image deployments/welcome-app-py welcome-app=auliardd/welcome:1.0.0
+    #     kubectl rollout restart deployment/welcome-app -n welcome-app
+    #     kubectl get deployment/welcome/app -n welcome-app
+
