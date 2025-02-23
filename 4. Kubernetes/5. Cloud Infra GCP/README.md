@@ -2,6 +2,8 @@
 
 Illustrated with a broader view from Organization > Project > Resources level, the common implementation is using host-project & shared VPC
 
+![test-stlr-gcp](https://github.com/user-attachments/assets/c6900cd7-5e39-4818-8156-2052cb51bf49)
+
 ## CI/CD
 
 - The CI process is quite simple, started from Code commit after changes, Github actions will build the image and push it to the dockerhub repository or we can use artifact registry in GCP instead
