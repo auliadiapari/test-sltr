@@ -1,0 +1,51 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-welcome
+  namespace: welcome
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.global-static-ip-name: "my-static-ip-address"
+    kubernetes.io/ingress.allow-http: "false"
+    networking.gke.io/v1beta1.FrontendConfig: "welcome-frontendconfig"
+   
+   # Use this to use Platform Mmanaged cert
+    # networking.gke.io/managed-certificates: managed-cert
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+  - hosts:
+    - app.welcome.com # example domain
+    secretName: secret-welcome-tls
+  rules:
+  - host: myapp.example.com # example domain
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecificss
+        backend:
+          service:
+            name: service-welcome
+            port:
+              number: 80
+
+---
+# apiVersion: networking.gke.io/v1beta1
+# kind: FrontendConfig
+# metadata:
+#   name: welcome-frontendconfig
+# spec:
+#   redirectToHttps:
+#     enabled: true
+#     responseCodeName: 308
+
+# ---
+# apiVersion: networking.gke.io/v1
+# kind: ManagedCertificate
+# metadata:
+#   name: managed-cert
+# spec:
+#   domains:
+#     - FQDN_1
+#     - FQDN_2

@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  service-welcome
+  namespace: welcome
+spec:
+  selector:
+    app:  welcome-app
+  type:  ClusterIP
+  ports:
+  - name:  service-welcome
+    port:  80
+    targetPort:  8080

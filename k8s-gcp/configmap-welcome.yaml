@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: configmap-app-py
-  namespace: app-py
+  name: configmap-welcome
+  namespace: welcome
   labels:
-    app: app-py
+    app: welcome-app
 data:
   PORT: "8000"
